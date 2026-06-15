@@ -26,6 +26,7 @@ TRIGRAM_BY_BITS = {
     (0, 0, 1): "艮",
     (0, 0, 0): "坤",
 }
+TRIGRAM_BITS_BY_NAME = {name: bits for bits, name in TRIGRAM_BY_BITS.items()}
 
 TRIGRAM_ELEMENT = {
     "乾": "金",
@@ -476,12 +477,31 @@ def build_chart(
     day_name, day_index = day_ganzhi(moment)
     spirits = _spirits(day_name[0])
     moving_lines = [index + 1 for index, value in enumerate(values) if value in {6, 9}]
+    primary_relatives = [
+        _relative(palace["element"], BRANCH_ELEMENT[najia[1]])
+        for najia in primary_najia
+    ]
+    present_relatives = set(primary_relatives)
+    palace_bits = TRIGRAM_BITS_BY_NAME[palace["name"]] * 2
+    hidden_najia = _najia(palace_bits)
+    hidden_relatives = [
+        _relative(palace["element"], BRANCH_ELEMENT[najia[1]])
+        for najia in hidden_najia
+    ]
 
     lines = []
     for index, value in enumerate(values):
         branch = primary_najia[index][1]
         changed_branch = changed_najia[index][1]
         line_number = index + 1
+        hidden = None
+        if hidden_relatives[index] not in present_relatives:
+            hidden_branch = hidden_najia[index][1]
+            hidden = {
+                "najia": hidden_najia[index],
+                "branch_element": BRANCH_ELEMENT[hidden_branch],
+                "relative": hidden_relatives[index],
+            }
         lines.append(
             {
                 "line": line_number,
@@ -492,7 +512,8 @@ def build_chart(
                 "ying": line_number == palace["ying"],
                 "najia": primary_najia[index],
                 "branch_element": BRANCH_ELEMENT[branch],
-                "relative": _relative(palace["element"], BRANCH_ELEMENT[branch]),
+                "relative": primary_relatives[index],
+                "hidden": hidden,
                 "spirit": spirits[index],
                 "changed_yin_yang": "阳" if changed_bits[index] else "阴",
                 "changed_najia": changed_najia[index],

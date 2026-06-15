@@ -121,6 +121,14 @@ class ChartTests(unittest.TestCase):
         self.assertEqual(chart["palace"]["generation"], "一世")
         self.assertEqual(chart["shi_line"], 1)
         self.assertEqual(chart["ying_line"], 4)
+        self.assertEqual(
+            chart["lines"][1]["hidden"],
+            {
+                "najia": "甲寅",
+                "branch_element": "木",
+                "relative": "妻财",
+            },
+        )
 
     def test_wandering_and_returning_soul_positions(self):
         wandering = build_chart(
