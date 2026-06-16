@@ -1,9 +1,35 @@
 ---
 name: tianyan
-description: Use when a user asks for 文王六爻、纳甲六爻、铜钱起卦、排卦、断卦，or provides a question, cast time, and six 6/7/8/9 line values for traditional Liuyao analysis.
+description: Use when a user asks for 文王六爻、纳甲六爻、铜钱起卦、排卦、断卦，or provides a question, cast time, and six bottom-to-top 6/7/8/9 or 老阴/少阳/少阴/老阳 line values for traditional Liuyao analysis.
 ---
 
 # Tianyan 文王六爻
+
+## Input Template
+
+Ask the user to provide exactly this format:
+
+```text
+问题：
+起卦时间：
+爻象：
+```
+
+Example:
+
+```text
+问题：这件事近期是否会有进展？
+起卦时间：2026-06-16 15:30
+爻象：7 8 9 7 8 6
+```
+
+Accept Chinese line names too:
+
+```text
+爻象：少阳、少阴、老阳、少阳、少阴、老阴
+```
+
+The line order is always bottom to top. Never reverse it silently.
 
 ## Scope
 
@@ -17,6 +43,11 @@ Do not use:
 - 时间直接起卦
 - mixed methods that replace Najia, Shi/Ying, useful-spirit, month, and day
   analysis
+
+If the user only provides two numbers such as `3 和 7` or `72 和 81`, do not
+cast a chart with this skill. Explain that the input belongs to digital or
+Meihua-style casting, not Wenwang Liuyao Najia. If they want that method, they
+need a separate Meihua Yi skill.
 
 Treat the result as traditional cultural analysis, not guaranteed prediction.
 
@@ -37,6 +68,8 @@ Require six line values in bottom-to-top order:
 - `8`: 少阴，静
 - `9`: 老阳，动
 
+Also accept `老阴`、`少阳`、`少阴`、`老阳` directly.
+
 Example:
 
 ```text
@@ -45,22 +78,47 @@ Example:
 爻象：7、8、9、7、6、8
 ```
 
+Normalize the cast time before calling the script. The script accepts
+`YYYY-MM-DD HH:MM` or `YYYY/MM/DD HH:MM`, with a space or `T` between date and
+time. Do not accept a date without hour and minute.
+
 If the timezone is absent, use the user's current timezone from the environment
-and state the assumption. Do not ask for a fourth user-facing field.
+when available and state the assumption. If no environment timezone is
+available, default to `Asia/Shanghai`. If the question clearly occurs in
+another region, ask for the timezone before interpreting. Do not ask for a
+fourth user-facing field unless the timezone is materially ambiguous.
 
 If any required field is missing or the line count/order is unclear, request
 the missing information before interpreting.
 
 ## Usage Discipline
 
-- Analyze at most three new hexagrams for the same user in one natural day when
-  the available conversation context permits counting.
+- In the visible conversation context, analyze at most three new hexagrams for
+  the same user in one natural day.
+- If the host environment provides persistent state, record and enforce the
+  count by the user's local date.
+- If historical count cannot be confirmed, enforce the limit only from visible
+  records and do not invent counts.
 - Do not recast a materially unchanged question. Return to the original chart
   for clarification or review.
-- Reviews, line explanations, strategy summaries, and analysis after meaningful
-  new real-world facts do not count as new casts.
-- If cross-conversation history is unavailable, say that the daily count only
-  covers the visible conversation.
+
+Treat these as repeated questions:
+
+1. Same subject and same matter, with only wording changed.
+2. Nearby time window while still asking the same event development.
+3. Asking `她会不会联系我` and then `她今天会不会找我` without new facts.
+4. Asking `这件事成不成` and then `有没有希望` about the same object.
+
+Do not treat these as repeated questions:
+
+1. Meaningful new real-world facts appeared.
+2. The time window clearly changed.
+3. The object of the question changed.
+4. The user shifts from outcome judgment to action advice, such as from
+   `会不会联系我` to `我现在怎么办`.
+
+Reviews, line explanations, strategy summaries, and reinterpretation after new
+facts do not count as new casts.
 
 ## Deterministic Charting
 
@@ -72,7 +130,7 @@ python scripts/pai_gua.py \
   --question "<问题>" \
   --time "<YYYY-MM-DD HH:MM>" \
   --timezone "<IANA timezone>" \
-  --lines "<six values bottom to top>"
+  --lines "<six values or Chinese line names bottom to top>"
 ```
 
 The script emits UTF-8 JSON containing:
@@ -116,39 +174,44 @@ medical evidence, legal documents, market risk, or safety facts.
 Use this structure:
 
 ```markdown
-## 卦象信息
+## 一、排盘结果
 
-问题：
-起卦时间：
-时区：
-爻序：自下而上
-本卦：
-动爻：
-变卦：
-八宫：
-世爻：
-应爻：
-月建：
-日辰：
-旬空：
-用神：
-判断强度：强 / 中 / 弱
+- 问题：
+- 起卦时间：
+- 时区：
+- 爻序：自下而上
+- 本卦：
+- 变卦：
+- 动爻：
+- 八宫：
+- 世爻：
+- 应爻：
+- 月建：
+- 日辰：
+- 旬空：
 
-## 一、总体结论
+## 二、用神选择
 
-## 二、用神与旺衰
+- 所问事项：
+- 取用神：
+- 取用理由：
 
-## 三、动爻与变爻
+## 三、卦象判断
 
-## 四、世应与现实关系
+- 用神旺衰：
+- 世应用神关系：
+- 动爻作用：
+- 变卦趋势：
+- 空破墓绝合冲刑害：
 
-## 五、时间倾向
+## 四、结论
 
-## 六、策略建议
-
-## 七、现实校验
-
-## 八、一句话断语
+- 直接判断：
+- 时间提示：
+- 行动建议：
+- 不确定点：
+- 现实校验：
+- 一句话断语：
 ```
 
 Keep the conclusion direct, calm, and evidence-linked. State uncertainty
@@ -170,4 +233,3 @@ employment, or contract decisions:
 - do not tell the user to delay urgent care, ignore legal deadlines, risk money,
   or enter danger because of a hexagram
 - do not give certainty, probability percentages, or guaranteed outcomes
-

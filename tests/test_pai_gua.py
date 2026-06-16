@@ -10,6 +10,7 @@ from scripts.pai_gua import (
     build_chart,
     day_ganzhi,
     month_commander,
+    parse_cast_time,
     parse_line_values,
     solar_term_utc,
     xunkong_for_index,
@@ -24,6 +25,12 @@ class InputTests(unittest.TestCase):
     def test_accepts_six_line_values_bottom_to_top(self):
         self.assertEqual(parse_line_values("7, 8, 9, 6, 7, 8"), (7, 8, 9, 6, 7, 8))
 
+    def test_accepts_chinese_line_aliases_bottom_to_top(self):
+        self.assertEqual(
+            parse_line_values("老阴、少阳、少阴、老阳、少阳、少阴"),
+            (6, 7, 8, 9, 7, 8),
+        )
+
     def test_rejects_wrong_number_of_lines(self):
         with self.assertRaisesRegex(ValueError, "exactly six"):
             parse_line_values("7,8,9")
@@ -31,6 +38,26 @@ class InputTests(unittest.TestCase):
     def test_rejects_values_outside_six_to_nine(self):
         with self.assertRaisesRegex(ValueError, "6, 7, 8, or 9"):
             parse_line_values("7,8,5,6,7,8")
+
+    def test_rejects_date_only_cast_time(self):
+        with self.assertRaisesRegex(ValueError, "YYYY-MM-DD HH:MM"):
+            parse_cast_time("2026-06-16", "Asia/Shanghai")
+
+    def test_rejects_hour_only_cast_time(self):
+        with self.assertRaisesRegex(ValueError, "YYYY-MM-DD HH:MM"):
+            parse_cast_time("2026-06-16 15", "Asia/Shanghai")
+
+    def test_rejects_cast_time_with_seconds(self):
+        with self.assertRaisesRegex(ValueError, "YYYY-MM-DD HH:MM"):
+            parse_cast_time("2026-06-16 15:30:00", "Asia/Shanghai")
+
+    def test_accepts_slash_date_and_t_separator_cast_time(self):
+        moment = parse_cast_time("2026/06/16T15:30", "Asia/Shanghai")
+        self.assertEqual(moment.isoformat(), "2026-06-16T15:30:00+08:00")
+
+    def test_accepts_trailing_timezone_after_strict_time(self):
+        moment = parse_cast_time("2026-06-16 15:30 Asia/Shanghai", None)
+        self.assertEqual(moment.isoformat(), "2026-06-16T15:30:00+08:00")
 
 
 class ChartTests(unittest.TestCase):
@@ -214,6 +241,12 @@ class CalendarTests(unittest.TestCase):
         for moment, expected in fixtures:
             with self.subTest(moment=moment):
                 self.assertEqual(month_commander(moment), expected)
+
+    def test_month_commander_changes_across_solar_term_boundary(self):
+        zone = ZoneInfo("Asia/Shanghai")
+        boundary = solar_term_utc(2024, "立春").astimezone(zone)
+        self.assertEqual(month_commander(boundary - datetime.resolution), "丑")
+        self.assertEqual(month_commander(boundary), "寅")
 
     def test_2024_solar_term_times_are_close_to_almanac(self):
         zone = ZoneInfo("Asia/Shanghai")

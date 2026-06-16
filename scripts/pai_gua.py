@@ -285,15 +285,30 @@ MONTH_BOUNDARIES = {
     "大雪": "子",
 }
 
+TIME_PATTERN = re.compile(r"^\d{4}[-/]\d{2}[-/]\d{2}[ T]\d{2}:\d{2}$")
+
+LINE_ALIASES = {
+    "老阴": 6,
+    "少阳": 7,
+    "少阴": 8,
+    "老阳": 9,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+}
+
 
 def parse_line_values(values: str | Iterable[int]) -> tuple[int, ...]:
     """Parse six 6/7/8/9 values ordered from the first line upward."""
     if isinstance(values, str):
         tokens = [token for token in re.split(r"[\s,，、/]+", values.strip()) if token]
         try:
-            parsed = tuple(int(token) for token in tokens)
-        except ValueError as exc:
-            raise ValueError("line values must be integers: 6, 7, 8, or 9") from exc
+            parsed = tuple(LINE_ALIASES[token] for token in tokens)
+        except KeyError as exc:
+            raise ValueError(
+                "line values must be 6, 7, 8, or 9; Chinese aliases are 老阴, 少阳, 少阴, 老阳"
+            ) from exc
     else:
         parsed = tuple(int(value) for value in values)
 
@@ -362,6 +377,9 @@ def parse_cast_time(cast_time: str, timezone_name: str | None) -> datetime:
         zone = ZoneInfo(zone_name)
     except ZoneInfoNotFoundError as exc:
         raise ValueError(f"unknown IANA timezone: {zone_name}") from exc
+
+    if not TIME_PATTERN.match(text):
+        raise ValueError("cast time must use YYYY-MM-DD HH:MM format")
 
     normalized = text.replace("/", "-")
     try:
