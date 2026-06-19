@@ -153,17 +153,32 @@ useful-spirit selection, judgment order, and output requirements.
 
 1. Restate the question, cast time, timezone assumption, and line order.
 2. Run the charting script.
-3. Identify the question category and select the useful spirit. Explain the
-   selection; do not silently change it to fit a preferred conclusion.
-4. Judge useful spirit, original spirit, taboo spirit, and enemy spirit against
-   month commander and day branch.
-5. Judge moving lines and only their changed lines.
-6. Judge Shi/Ying, generation/control, clash/combination, void, break, tomb,
-   hidden spirit, and relevant special structures.
-7. Use six spirits, hexagram text, and line text only as supporting evidence.
-8. Compare the symbolic reading with known real-world facts.
-9. Give a direct but non-absolute conclusion and a restrained practical
+3. Explain the Zhouyi meaning before applying Najia mechanics:
+   - `本卦`: explain the hexagram's original meaning, judgment, image, and
+     overall structure.
+   - `动爻`: explain only the moving lines, in bottom-to-top order, using their
+     original line meanings.
+   - `变卦`: explain the changed hexagram's original meaning and the structural
+     transition from the primary hexagram.
+4. Begin the Najia analysis only after the hexagram-meaning section:
+   - identify the question category and select the useful spirit
+   - judge useful spirit, original spirit, taboo spirit, and enemy spirit
+     against month commander and day branch
+   - judge moving lines and only their changed lines
+   - judge Shi/Ying, generation/control, clash/combination, void, break, tomb,
+     hidden spirit, and relevant special structures
+5. Compare the Najia judgment with known real-world facts.
+6. Give a direct but non-absolute conclusion and a restrained practical
    strategy.
+
+The `卦意解读` layer only explains the original hexagram and line meanings. It
+只解释卦爻本义，不得映射到用户、对方或现实事件。Do not infer a person's
+thoughts or give question-specific advice inside `本卦`, `动爻`, or `变卦`.
+Application to the concrete question begins in `纳甲分析`.
+
+For a static hexagram, write `无动爻` and omit a separate changed-hexagram
+interpretation. For a moving hexagram, explain only the lines that actually
+move.
 
 Reality overrides symbolic inference. A symbolic sign of connection does not
 prove action; a favorable tendency does not override explicit rejection,
@@ -190,18 +205,37 @@ Use this structure:
 - 日辰：
 - 旬空：
 
-## 二、用神选择
+## 二、卦意解读
+
+### 本卦
+
+- 卦辞与大象：
+- 原始卦义：
+
+### 动爻
+
+- 爻辞：
+- 爻义：
+
+### 变卦
+
+- 卦辞与大象：
+- 原始卦义：
+- 本卦至变卦的结构变化：
+
+## 三、纳甲分析
+
+### 用神选择
 
 - 所问事项：
 - 取用神：
 - 取用理由：
 
-## 三、卦象判断
+### 旺衰与作用
 
 - 用神旺衰：
 - 世应用神关系：
-- 动爻作用：
-- 变卦趋势：
+- 动爻及变爻作用：
 - 空破墓绝合冲刑害：
 
 ## 四、结论
