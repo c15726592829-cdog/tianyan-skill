@@ -154,12 +154,12 @@ useful-spirit selection, judgment order, and output requirements.
 1. Restate the question, cast time, timezone assumption, and line order.
 2. Run the charting script.
 3. Explain the Zhouyi meaning before applying Najia mechanics:
-   - `本卦`: explain the hexagram's original meaning, judgment, image, and
-     overall structure.
-   - `动爻`: explain only the moving lines, in bottom-to-top order, using their
-     original line meanings.
-   - `变卦`: explain the changed hexagram's original meaning and the structural
-     transition from the primary hexagram.
+   - `本卦`: quote the original judgment and Great Image first, then explain
+     the hexagram's original meaning and overall structure.
+   - `动爻`: quote each actual moving line first, in bottom-to-top order, then
+     explain its original line meaning.
+   - `变卦`: quote the original judgment and Great Image first, then explain
+     the changed hexagram and the structural transition from the primary.
 4. Begin the Najia analysis only after the hexagram-meaning section:
    - identify the question category and select the useful spirit
    - judge useful spirit, original spirit, taboo spirit, and enemy spirit
@@ -179,6 +179,14 @@ Application to the concrete question begins in `纳甲分析`.
 For a static hexagram, write `无动爻` and omit a separate changed-hexagram
 interpretation. For a moving hexagram, explain only the lines that actually
 move.
+
+For quoted original text:
+
+- preserve the source order and do not silently rewrite it as modern Chinese
+- include a moving line's Small Image only when it is used in the explanation
+- 不得把转述或白话释义标为原文
+- if exact wording cannot be verified, write `原文未核实` instead of inventing
+  or reconstructing a quotation
 
 Reality overrides symbolic inference. A symbolic sign of connection does not
 prove action; a favorable tendency does not override explicit rejection,
@@ -209,18 +217,18 @@ Use this structure:
 
 ### 本卦
 
-- 卦辞与大象：
-- 原始卦义：
+- 卦辞与大象原文：
+- 卦意：
 
 ### 动爻
 
-- 爻辞：
-- 爻义：
+- 爻辞原文：
+- 爻意：
 
 ### 变卦
 
-- 卦辞与大象：
-- 原始卦义：
+- 卦辞与大象原文：
+- 卦意：
 - 本卦至变卦的结构变化：
 
 ## 三、纳甲分析
