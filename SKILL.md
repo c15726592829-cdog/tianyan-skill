@@ -1,11 +1,13 @@
 ---
 name: tianyan
-description: Use when a user asks for 文王六爻、纳甲六爻、铜钱起卦、排卦、断卦，or provides a question, cast time, and six bottom-to-top 6/7/8/9 or 老阴/少阳/少阴/老阳 line values for traditional Liuyao analysis.
+description: Use when a user asks for 文王六爻、纳甲六爻、铜钱起卦、代起卦、排卦、断卦，or provides a question, cast time, and six bottom-to-top 6/7/8/9 or 老阴/少阳/少阴/老阳 line values for traditional Liuyao analysis.
 ---
 
 # Tianyan 文王六爻
 
-## Input Template
+## Casting Paths
+
+### User-Supplied Casting
 
 Ask the user to provide exactly this format:
 
@@ -31,6 +33,16 @@ Accept Chinese line names too:
 
 The line order is always bottom to top. Never reverse it silently.
 
+### Assistant Three-Coin Casting
+
+Use assistant casting only when the user explicitly asks with wording such as
+`你帮我起卦`, `代我抛硬币`, or `随机起卦`.
+
+Require a finalized question and a known timezone. Use the script's actual
+execution minute as the cast time. Never reuse a time supplied before the
+assistant actually casts the coins. Never replace user-supplied lines with an
+assistant cast.
+
 ## Scope
 
 Use only traditional Wenwang Liuyao Najia.
@@ -50,8 +62,10 @@ Meihua-style casting, not Wenwang Liuyao Najia. If they want that method, they
 need a separate Meihua Yi skill.
 
 Treat the result as traditional cultural analysis, not guaranteed prediction.
+Assistant casting is an auditable software simulation of the traditional
+three-coin method, not a claim of supernatural randomness.
 
-## Required Input
+## Manual Casting Input
 
 Require exactly these three user-facing fields:
 
@@ -91,6 +105,42 @@ fourth user-facing field unless the timezone is materially ambiguous.
 If any required field is missing or the line count/order is unclear, request
 the missing information before interpreting.
 
+## Assistant Casting Workflow
+
+Resolve paths relative to this `SKILL.md`. From the skill directory, run:
+
+```text
+python scripts/qi_gua.py \
+  --question "<问题>" \
+  --timezone "<IANA timezone>"
+```
+
+The script simulates three coins per line and six lines bottom to top:
+
+| Combination | Value | Line |
+|---|---:|---|
+| 三字 | 6 | 老阴，动 |
+| 两字一背 | 7 | 少阳，静 |
+| 一字两背 | 8 | 少阴，静 |
+| 三背 | 9 | 老阳，动 |
+
+`字面=2` and `背面=3`. The script uses OS-backed entropy, discloses the entropy
+and all eighteen coin results, and records the script's actual execution minute.
+
+For a live request, run `qi_gua.py` exactly once. Show the six throws before
+chart interpretation. Never rerun because the result is inconvenient or the
+user asks for a more favorable chart.
+
+Pass the returned `cast_time`, `timezone`, and `line_values_text` to
+`pai_gua.py`. `line_values_text` preserves the six bottom-to-top values as the
+comma-separated form required by `--lines`. Never replace user-supplied lines.
+If either script fails before returning valid JSON, report the failure instead
+of inventing or rerolling lines.
+
+The `--replay-entropy` and `--replay-time` options reproduce a disclosed cast.
+Replay output is audit-only, does not count as a new cast, and must never be
+interpreted as newly generated divination.
+
 ## Usage Discipline
 
 - In the visible conversation context, analyze at most three new hexagrams for
@@ -101,6 +151,7 @@ the missing information before interpreting.
   records and do not invent counts.
 - Do not recast a materially unchanged question. Return to the original chart
   for clarification or review.
+- Assistant live casts count toward the same three-per-day limit.
 
 Treat these as repeated questions:
 
@@ -153,13 +204,13 @@ useful-spirit selection, judgment order, and output requirements.
 
 1. Restate the question, cast time, timezone assumption, and line order.
 2. Run the charting script.
-3. Explain the Zhouyi meaning before applying Najia mechanics:
-   - `本卦`: quote the original judgment and Great Image first, then explain
-     the hexagram's original meaning and overall structure.
-   - `动爻`: quote each actual moving line first, in bottom-to-top order, then
-     explain its original line meaning.
-   - `变卦`: quote the original judgment and Great Image first, then explain
-     the changed hexagram and the structural transition from the primary.
+3. Present the Zhouyi text without applying it to the question:
+   - `本卦`: original judgment and Great Image, then a plain modern-Chinese
+     translation.
+   - `动爻`: each actual moving-line text in bottom-to-top order, then a plain
+     modern-Chinese translation.
+   - `变卦`: original judgment and Great Image, then a plain modern-Chinese
+     translation.
 4. Begin the Najia analysis only after the hexagram-meaning section:
    - identify the question category and select the useful spirit
    - judge useful spirit, original spirit, taboo spirit, and enemy spirit
@@ -171,10 +222,10 @@ useful-spirit selection, judgment order, and output requirements.
 6. Give a direct but non-absolute conclusion and a restrained practical
    strategy.
 
-The `卦意解读` layer only explains the original hexagram and line meanings. It
+The `卦意解读` layer contains only original text and plain translation. It
 只解释卦爻本义，不得映射到用户、对方或现实事件。Do not infer a person's
-thoughts or give question-specific advice inside `本卦`, `动爻`, or `变卦`.
-Application to the concrete question begins in `纳甲分析`.
+thoughts, describe symbolic application, or give advice inside `本卦`, `动爻`,
+or `变卦`. Question-specific interpretation begins in `纳甲分析`.
 
 For a static hexagram, write `无动爻` and omit a separate changed-hexagram
 interpretation. For a moving hexagram, explain only the lines that actually
@@ -218,18 +269,17 @@ Use this structure:
 ### 本卦
 
 - 卦辞与大象原文：
-- 卦意：
+- 白话文：
 
 ### 动爻
 
 - 爻辞原文：
-- 爻意：
+- 白话文：
 
 ### 变卦
 
 - 卦辞与大象原文：
-- 卦意：
-- 本卦至变卦的结构变化：
+- 白话文：
 
 ## 三、纳甲分析
 
