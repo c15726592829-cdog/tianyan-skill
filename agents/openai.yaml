@@ -1,7 +1,8 @@
 interface:
   display_name: "Tianyan 文王六爻"
-  short_description: "传统文王六爻纳甲排盘与克制断卦"
-  default_prompt: "Use $tianyan to analyze my Wenwang Liuyao cast, or cast six traditional three-coin lines on my behalf when I explicitly request it."
+  short_description: "传统文王六爻纳甲排盘、克制断卦、准确性测试与复现协议"
+  default_prompt: "Use $tianyan to analyze or audit a Wenwang Liuyao cast, including explicit reproducible accuracy testing."
 
 policy:
   allow_implicit_invocation: true
+
