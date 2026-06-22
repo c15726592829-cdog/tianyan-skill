@@ -1,5 +1,9 @@
 # 文王六爻纳甲规则
 
+This file defines chart mechanics. Interpretation and accuracy scoring belong
+to [classical-interpretation-rules.md](classical-interpretation-rules.md) and
+[accuracy-testing.md](accuracy-testing.md).
+
 ## Contents
 
 1. Method boundary
@@ -132,6 +136,8 @@ Tombs:
 
 Use combinations only when the participating branches and strength conditions
 are actually present. Do not treat every pair as a completed transformation.
+These structures do not by themselves identify an object, location, gender,
+relationship, companion, or modern place name.
 
 ## Month, Day, Void, And Break
 
@@ -197,4 +203,9 @@ lines.
 - Do not fill missing data from memory when the script reports an error.
 - State calendar assumptions near solar-term and Zi-hour boundaries.
 - Separate chart facts from interpretive inferences.
+- Do not infer an exact object, person, gender, relationship, destination, or
+  time from a branch, six relative, trigram, or six spirit alone.
+- Do not treat a static line as absent or a moving line as proof that its
+  referent exists, acts, or succeeds.
+- A matching branch is not sufficient evidence for an exact date.
 
