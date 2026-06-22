@@ -1,15 +1,31 @@
 # 文王六爻断卦指南
 
+Read [classical-interpretation-rules.md](classical-interpretation-rules.md)
+before applying this workflow. In an explicit benchmark session, also read
+[accuracy-testing.md](accuracy-testing.md) and lock the answer before reveal.
+
 ## Contents
 
-1. Select the useful spirit
-2. Establish strength
-3. Read movement
-4. Read Shi and Ying
-5. Handle common question types
-6. Judge timing
-7. Calibrate confidence
-8. Apply reality and safety checks
+1. Fix perspective and evidence labels
+2. Select the useful spirit
+3. Establish strength
+4. Read movement
+5. Read Shi and Ying
+6. Handle common question types
+7. Judge timing
+8. Calibrate confidence
+9. Apply reality and safety checks
+
+## Perspective And Evidence Labels
+
+Preserve the user's exact question. Identify the asker, named subject, external
+counterpart, matter, requested resolution, and time window before selecting a
+useful spirit. For a named friend or other outside person, normally use Ying as
+the person-anchor; use a matter-specific relative as secondary evidence.
+
+Label each material statement as chart fact, classical rule, inference,
+contrary evidence, or speculation. State the anchor before interpretation and
+do not change it after ground truth is revealed.
 
 ## Select The Useful Spirit
 
@@ -31,6 +47,9 @@ Common traditional correspondences:
 Modern relationship questions are context-sensitive. Do not select 妻财 or 官鬼
 solely from gender. Use the user's role, the relationship being asked about,
 Shi/Ying, and the matter-specific relative; state the choice.
+
+Six relatives express roles relative to the palace element. They do not prove a
+person's sex or exact relationship identity.
 
 If the question combines several distinct outcomes, narrow it before judging or
 give separate, weaker conclusions.
@@ -83,6 +102,9 @@ For every moving line that touches the main matter:
 Movement indicates activity, not automatic success. A moving taboo spirit can
 intensify obstruction; a moving useful spirit can still become controlled or
 retreat.
+
+Static does not mean absent. Separate representation, presence, activation,
+and ability to manifest.
 
 ## Read Shi And Ying
 
@@ -156,6 +178,9 @@ Potential timing cues include:
 State why a window is selected. If several timing rules conflict, lower the
 confidence rather than choosing the most attractive date.
 
+Do not infer an exact date from a matching branch alone. Require the selected
+reference, an activation rule, a calendar unit, and no stronger contradiction.
+
 ## Confidence
 
 Use:
@@ -183,10 +208,11 @@ Reality facts override contrary symbolic speculation.
 
 For each conclusion:
 
-1. state the judgment
-2. name the chart evidence
-3. state the uncertainty
-4. give a restrained practical action
+1. state the judgment and its resolution
+2. name the chart facts and classical rule
+3. state the inference and contrary evidence
+4. label speculation and confidence
+5. give a restrained practical action
 
 Avoid emotional reassurance, mystical filler, certainty, mind-reading, and
 claims that the universe guarantees an outcome.
