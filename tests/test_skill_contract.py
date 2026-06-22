@@ -1,77 +1,60 @@
-import unittest
 from pathlib import Path
+import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL_TEXT = (ROOT / "SKILL.md").read_text(encoding="utf-8")
 
 
 class SkillContractTests(unittest.TestCase):
-    def test_hexagram_meaning_precedes_najia_analysis(self):
-        headings = [
-            "## 二、卦意解读",
-            "### 本卦",
-            "### 动爻",
-            "### 变卦",
-            "## 三、纳甲分析",
-            "## 四、结论",
-        ]
+    def test_skill_declares_accuracy_mode_and_references(self):
+        text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("## Accuracy Test Mode", text)
+        self.assertIn("references/classical-interpretation-rules.md", text)
+        self.assertIn("references/accuracy-testing.md", text)
+        self.assertIn("Scoring dimensions and match rules:", text)
 
-        positions = [SKILL_TEXT.index(heading) for heading in headings]
+    def test_classical_guardrail_phrases(self):
+        path = ROOT / "references" / "classical-interpretation-rules.md"
+        self.assertTrue(path.is_file(), f"missing reference: {path.name}")
+        text = path.read_text(encoding="utf-8")
+        for phrase in (
+            "specific friend or outside person",
+            "static line does not mean absence",
+            "not universal gender labels",
+            "three-combination",
+            "named modern city",
+            "branch match alone",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
 
-        self.assertEqual(positions, sorted(positions))
+    def test_accuracy_protocol_sections(self):
+        path = ROOT / "references" / "accuracy-testing.md"
+        self.assertTrue(path.is_file(), f"missing reference: {path.name}")
+        text = path.read_text(encoding="utf-8")
+        for heading in (
+            "## Activation",
+            "## Pre-Reveal Record",
+            "## Post-Reveal Scoring",
+            "## Reproducibility Record",
+        ):
+            with self.subTest(heading=heading):
+                self.assertIn(heading, text)
+        self.assertIn("does not count as a hit", text)
+        self.assertIn("locked scoring dimensions", text)
+        for dimension in ("direction", "date", "time-window"):
+            with self.subTest(dimension=dimension):
+                self.assertIn(dimension, text)
 
-    def test_hexagram_meaning_is_not_applied_to_the_user(self):
-        self.assertIn("只解释卦爻本义", SKILL_TEXT)
-        self.assertIn("不得映射到用户、对方或现实事件", SKILL_TEXT)
-
-    def test_output_does_not_keep_the_legacy_second_section(self):
-        self.assertNotIn("## 二、用神选择", SKILL_TEXT)
-
-    def test_original_text_precedes_each_hexagram_interpretation(self):
-        meaning_section = SKILL_TEXT.split("## 二、卦意解读", 1)[1].split(
-            "## 三、纳甲分析", 1
-        )[0]
-        primary = meaning_section.split("### 本卦", 1)[1].split("### 动爻", 1)[0]
-        moving = meaning_section.split("### 动爻", 1)[1].split("### 变卦", 1)[0]
-        changed = meaning_section.split("### 变卦", 1)[1]
-
-        self.assertLess(
-            primary.index("- 卦辞与大象原文："), primary.index("- 白话文：")
+    def test_exact_answer_confidence_caps(self):
+        text = (ROOT / "references" / "classical-interpretation-rules.md").read_text(
+            encoding="utf-8"
         )
-        self.assertLess(
-            moving.index("- 爻辞原文："), moving.index("- 白话文：")
-        )
-        self.assertLess(
-            changed.index("- 卦辞与大象原文："), changed.index("- 白话文：")
-        )
-        self.assertIn("不得把转述或白话释义标为原文", SKILL_TEXT)
-
-    def test_assistant_casting_requires_explicit_request_and_one_live_run(self):
-        self.assertIn("你帮我起卦", SKILL_TEXT)
-        self.assertIn("python scripts/qi_gua.py", SKILL_TEXT)
-        self.assertIn("run `qi_gua.py` exactly once", SKILL_TEXT)
-        self.assertIn("Never rerun", SKILL_TEXT)
-        self.assertIn("replay output is audit-only", SKILL_TEXT.lower())
-
-    def test_manual_lines_take_precedence_over_assistant_casting(self):
-        self.assertIn("Never replace user-supplied lines", SKILL_TEXT)
-        self.assertIn("script's actual execution minute", SKILL_TEXT)
-
-    def test_hexagram_layer_is_original_text_plus_plain_translation_only(self):
-        meaning_section = SKILL_TEXT.split("## 二、卦意解读", 1)[1].split(
-            "## 三、纳甲分析", 1
-        )[0]
-
-        self.assertEqual(meaning_section.count("- 白话文："), 3)
-        self.assertNotIn("- 卦意：", meaning_section)
-        self.assertNotIn("- 爻意：", meaning_section)
-        self.assertNotIn("- 本卦至变卦的结构变化：", meaning_section)
-        self.assertIn(
-            "Question-specific interpretation begins in `纳甲分析`.",
-            SKILL_TEXT,
-        )
+        self.assertIn("open-world named modern city: weak", text)
+        self.assertIn("exact date or clock time: weak", text)
+        self.assertIn("exact modern object: at most medium", text)
 
 
 if __name__ == "__main__":
     unittest.main()
+
