@@ -65,6 +65,30 @@ Treat the result as traditional cultural analysis, not guaranteed prediction.
 Assistant casting is an auditable software simulation of the traditional
 three-coin method, not a claim of supernatural randomness.
 
+## Accuracy Test Mode
+
+Activate this mode only when the user explicitly calls the session an accuracy
+test, benchmark, blind test, or `准确性测试`. State that the mode is active.
+
+Accuracy Test Mode overrides the normal three-new-hexagrams-per-day limit for
+clearly identified test cases. It does not override any casting or audit
+safeguard:
+
+- assign an immutable case ID and preserve the user's exact question
+- treat each materially distinct test prompt as one case
+- perform at most one live assistant cast per case
+- never reroll, replace supplied lines, or recast the same case
+- record cast time, IANA timezone, bottom-to-top values, full chart, and for an
+  assistant cast the disclosed entropy and all eighteen coins
+- lock the perspective, selected anchor, primary answer, resolution,
+  alternatives, evidence for/against, and confidence before ground truth
+- keep post-reveal reinterpretation separate from the locked answer and score
+
+Read [references/accuracy-testing.md](references/accuracy-testing.md) before
+opening a test case and follow its case ledger and scoring rules. A replay is
+audit-only. Content checks validate the protocol structure, not predictive
+accuracy.
+
 ## Manual Casting Input
 
 Require exactly these three user-facing fields:
@@ -143,6 +167,9 @@ interpreted as newly generated divination.
 
 ## Usage Discipline
 
+The daily limit below applies outside explicit Accuracy Test Mode. The test-mode
+override and unchanged one-cast safeguards are defined above.
+
 - In the visible conversation context, analyze at most three new hexagrams for
   the same user in one natural day.
 - If the host environment provides persistent state, record and enforce the
@@ -198,7 +225,10 @@ limitation instead of fabricating a complete chart.
 Read [references/wenwang-liuyao-rules.md](references/wenwang-liuyao-rules.md)
 before interpreting chart mechanics. Read
 [references/interpretation-guide.md](references/interpretation-guide.md) for
-useful-spirit selection, judgment order, and output requirements.
+useful-spirit selection, judgment order, and output requirements. Read
+[references/classical-interpretation-rules.md](references/classical-interpretation-rules.md)
+for perspective, evidence labels, third-party anchors, object/location/timing
+limits, and confidence resolution.
 
 ## Interpretation Order
 
@@ -211,16 +241,19 @@ useful-spirit selection, judgment order, and output requirements.
      modern-Chinese translation.
    - `变卦`: original judgment and Great Image, then a plain modern-Chinese
      translation.
-4. Begin the Najia analysis only after the hexagram-meaning section:
-   - identify the question category and select the useful spirit
-   - judge useful spirit, original spirit, taboo spirit, and enemy spirit
-     against month commander and day branch
-   - judge moving lines and only their changed lines
-   - judge Shi/Ying, generation/control, clash/combination, void, break, tomb,
-     hidden spirit, and relevant special structures
-5. Compare the Najia judgment with known real-world facts.
-6. Give a direct but non-absolute conclusion and a restrained practical
-   strategy.
+4. Fix the question perspective, person/matter anchor, and useful spirit before
+   reading individual symbols.
+5. Judge the useful spirit and supporting/opposing roles against month and day.
+6. Judge moving lines and only their actual changed lines; static is not absent
+   and moving is not automatic success or presence.
+7. Judge Shi/Ying and the named third party from the fixed perspective.
+8. Judge relevant branch structures, void, break, tomb, and hidden spirit.
+9. Use six spirits only as secondary imagery.
+10. Use hexagram and trigram images only as corroboration; exact objects,
+    modern cities, relationship identities, and dates require independent
+    support and must be labeled speculative when support is insufficient.
+11. Compare the inference with known real-world facts and contrary evidence.
+12. Give a bounded conclusion with resolution and confidence.
 
 The `卦意解读` layer contains only original text and plain translation. It
 只解释卦爻本义，不得映射到用户、对方或现实事件。Do not infer a person's
@@ -296,6 +329,15 @@ Use this structure:
 - 动爻及变爻作用：
 - 空破墓绝合冲刑害：
 
+### 证据分层
+
+- 排盘事实：
+- 古典规则：
+- 推断：
+- 反证：
+- 猜测或候选：
+- 结论分辨率与信心：
+
 ## 四、结论
 
 - 直接判断：
@@ -305,6 +347,24 @@ Use this structure:
 - 现实校验：
 - 一句话断语：
 ```
+
+In Accuracy Test Mode, append the locked-answer contract before asking for or
+accepting the reveal:
+
+```text
+Case ID:
+Primary answer:
+Resolution:
+Ranked alternatives (optional, maximum 3):
+Confidence:
+Evidence for:
+Evidence against:
+Scoring dimensions and match rules:
+Lock time and timezone:
+```
+
+After reveal, preserve the truth verbatim and report primary score, alternative
+rank, category coverage, and failure class. Never replace the locked record.
 
 Keep the conclusion direct, calm, and evidence-linked. State uncertainty
 explicitly. Use time windows or relative speed, never guaranteed dates.
@@ -325,3 +385,4 @@ employment, or contract decisions:
 - do not tell the user to delay urgent care, ignore legal deadlines, risk money,
   or enter danger because of a hexagram
 - do not give certainty, probability percentages, or guaranteed outcomes
+
