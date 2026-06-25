@@ -54,7 +54,17 @@ class SkillContractTests(unittest.TestCase):
         self.assertIn("exact date or clock time: weak", text)
         self.assertIn("exact modern object: at most medium", text)
 
+    def test_question_routing_contract(self):
+        text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("references/question-types/index.md", text)
+        self.assertIn("Primary category:", text)
+        self.assertIn("Primary anchor or useful spirit:", text)
+        self.assertIn("Maximum defensible resolution:", text)
+
+    def test_skill_line_count_stays_compact(self):
+        line_count = len((ROOT / "SKILL.md").read_text(encoding="utf-8").splitlines())
+        self.assertLess(line_count, 500)
+
 
 if __name__ == "__main__":
     unittest.main()
-

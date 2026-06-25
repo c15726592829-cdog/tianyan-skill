@@ -216,4 +216,3 @@ than the evidence supports. Give contrary evidence beside the conclusion.
 - Listing many alternatives and later claiming whichever one matched.
 - Counting a post-reveal reinterpretation as a pre-reveal success.
 - Omitting contrary evidence or silently raising confidence after feedback.
-

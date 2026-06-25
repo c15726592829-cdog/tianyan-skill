@@ -198,6 +198,29 @@ Do not treat these as repeated questions:
 Reviews, line explanations, strategy summaries, and reinterpretation after new
 facts do not count as new casts.
 
+## Question Classification
+
+Before chart interpretation, read
+[references/question-types/index.md](references/question-types/index.md) and
+[references/question-types/common-rules.md](references/question-types/common-rules.md).
+Select exactly one primary category and zero to two secondary categories. Load
+the primary module under `references/question-types/` and only the secondary
+modules needed by the user's wording.
+
+Preserve the exact question, then lock:
+
+- primary category and classification confidence
+- question subject and perspective
+- primary anchor or useful spirit
+- rejected alternative anchors
+- loaded source rule IDs
+- requested resolution and maximum defensible resolution
+
+Use source records marked `A` or `B` as governing rules. Source records marked
+`C` are navigation-only. If the question asks for an exact modern object, named
+city, exact companion, exact identity, or exact date, require independent
+support and apply the resolution caps in the loaded module.
+
 ## Deterministic Charting
 
 Resolve paths relative to this `SKILL.md`. Run the bundled script with an
@@ -241,19 +264,20 @@ limits, and confidence resolution.
      modern-Chinese translation.
    - `变卦`: original judgment and Great Image, then a plain modern-Chinese
      translation.
-4. Fix the question perspective, person/matter anchor, and useful spirit before
+4. Classify the question through the question-type index and loaded module.
+5. Fix the question perspective, person/matter anchor, and useful spirit before
    reading individual symbols.
-5. Judge the useful spirit and supporting/opposing roles against month and day.
-6. Judge moving lines and only their actual changed lines; static is not absent
+6. Judge the useful spirit and supporting/opposing roles against month and day.
+7. Judge moving lines and only their actual changed lines; static is not absent
    and moving is not automatic success or presence.
-7. Judge Shi/Ying and the named third party from the fixed perspective.
-8. Judge relevant branch structures, void, break, tomb, and hidden spirit.
-9. Use six spirits only as secondary imagery.
-10. Use hexagram and trigram images only as corroboration; exact objects,
+8. Judge Shi/Ying and the named third party from the fixed perspective.
+9. Judge relevant branch structures, void, break, tomb, and hidden spirit.
+10. Use six spirits only as secondary imagery.
+11. Use hexagram and trigram images only as corroboration; exact objects,
     modern cities, relationship identities, and dates require independent
     support and must be labeled speculative when support is insufficient.
-11. Compare the inference with known real-world facts and contrary evidence.
-12. Give a bounded conclusion with resolution and confidence.
+12. Compare the inference with known real-world facts and contrary evidence.
+13. Give a bounded conclusion with resolution and confidence.
 
 The `卦意解读` layer contains only original text and plain translation. It
 只解释卦爻本义，不得映射到用户、对方或现实事件。Do not infer a person's
@@ -315,6 +339,19 @@ Use this structure:
 - 白话文：
 
 ## 三、纳甲分析
+
+### 问题分类
+
+- Primary category:
+- Secondary categories:
+- Classification confidence:
+- Question subject:
+- Perspective:
+- Primary anchor or useful spirit:
+- Rejected alternative anchors:
+- Loaded rule IDs:
+- Requested resolution:
+- Maximum defensible resolution:
 
 ### 用神选择
 
@@ -385,4 +422,3 @@ employment, or contract decisions:
 - do not tell the user to delay urgent care, ignore legal deadlines, risk money,
   or enter danger because of a hexagram
 - do not give certainty, probability percentages, or guaranteed outcomes
-

@@ -208,4 +208,3 @@ lines.
 - Do not treat a static line as absent or a moving line as proof that its
   referent exists, acts, or succeeds.
 - A matching branch is not sufficient evidence for an exact date.
-

@@ -216,4 +216,3 @@ For each conclusion:
 
 Avoid emotional reassurance, mystical filler, certainty, mind-reading, and
 claims that the universe guarantees an outcome.
-

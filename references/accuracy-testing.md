@@ -177,4 +177,3 @@ Post-reveal reinterpretation is allowed for diagnosis, but label it
 `retrospective analysis`. Preserve the locked answer and original score. Never
 replace the pre-reveal record, and never use a better retrospective fit as
 evidence that the original answer was correct.
-

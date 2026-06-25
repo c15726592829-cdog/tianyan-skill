@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "people-identity-01",
+      "question": "我今天和谁一起吃的晚饭",
+      "primary_category": "people-identity",
+      "secondary_categories": []
+    },
+    {
+      "id": "people-identity-02",
+      "question": "刚才陪我逛街的人是谁",
+      "primary_category": "people-identity",
+      "secondary_categories": []
+    },
+    {
+      "id": "people-identity-03",
+      "question": "我的好朋友刘硕士和谁一起玩的",
+      "primary_category": "people-identity",
+      "secondary_categories": ["travel-whereabouts"]
+    },
+    {
+      "id": "thoughts-intentions-01",
+      "question": "对方现在对这件事是什么态度",
+      "primary_category": "thoughts-intentions",
+      "secondary_categories": []
+    },
+    {
+      "id": "thoughts-intentions-02",
+      "question": "他心里到底怎么想我",
+      "primary_category": "thoughts-intentions",
+      "secondary_categories": []
+    },
+    {
+      "id": "thoughts-intentions-03",
+      "question": "刘硕士对这次出行是什么想法",
+      "primary_category": "thoughts-intentions",
+      "secondary_categories": ["travel-whereabouts"]
+    },
+    {
+      "id": "romance-marriage-01",
+      "question": "我和他感情后面会怎么发展",
+      "primary_category": "romance-marriage",
+      "secondary_categories": []
+    },
+    {
+      "id": "romance-marriage-02",
+      "question": "这个人是不是适合继续谈",
+      "primary_category": "romance-marriage",
+      "secondary_categories": []
+    },
+    {
+      "id": "romance-marriage-03",
+      "question": "我们会不会复合并联系上",
+      "primary_category": "romance-marriage",
+      "secondary_categories": ["contact-actions"]
+    },
+    {
+      "id": "contact-actions-01",
+      "question": "他今天会不会联系我",
+      "primary_category": "contact-actions",
+      "secondary_categories": ["timing"]
+    },
+    {
+      "id": "contact-actions-02",
+      "question": "对方还会来找我吗",
+      "primary_category": "contact-actions",
+      "secondary_categories": []
+    },
+    {
+      "id": "contact-actions-03",
+      "question": "我主动发消息后他会不会回复",
+      "primary_category": "contact-actions",
+      "secondary_categories": ["strategy-comparison"]
+    },
+    {
+      "id": "location-direction-01",
+      "question": "我的钥匙在什么方位",
+      "primary_category": "location-direction",
+      "secondary_categories": ["objects-lost-property"]
+    },
+    {
+      "id": "location-direction-02",
+      "question": "她现在大概在哪个方向",
+      "primary_category": "location-direction",
+      "secondary_categories": []
+    },
+    {
+      "id": "location-direction-03",
+      "question": "朋友这次玩的地方偏哪个方向",
+      "primary_category": "location-direction",
+      "secondary_categories": ["travel-whereabouts"]
+    },
+    {
+      "id": "timing-01",
+      "question": "我的好朋友刘硕士什么时间出发玩的",
+      "primary_category": "timing",
+      "secondary_categories": ["travel-whereabouts"]
+    },
+    {
+      "id": "timing-02",
+      "question": "这件事大概什么时候有消息",
+      "primary_category": "timing",
+      "secondary_categories": []
+    },
+    {
+      "id": "timing-03",
+      "question": "他什么时候会联系我",
+      "primary_category": "timing",
+      "secondary_categories": ["contact-actions"]
+    },
+    {
+      "id": "objects-lost-property-01",
+      "question": "我的左手拿的什么",
+      "primary_category": "objects-lost-property",
+      "secondary_categories": []
+    },
+    {
+      "id": "objects-lost-property-02",
+      "question": "找不到的耳机在哪类地方",
+      "primary_category": "objects-lost-property",
+      "secondary_categories": ["location-direction"]
+    },
+    {
+      "id": "objects-lost-property-03",
+      "question": "我包里现在放着什么重要东西",
+      "primary_category": "objects-lost-property",
+      "secondary_categories": []
+    },
+    {
+      "id": "travel-whereabouts-01",
+      "question": "我的好朋友刘硕士去哪玩了",
+      "primary_category": "travel-whereabouts",
+      "secondary_categories": ["location-direction"]
+    },
+    {
+      "id": "travel-whereabouts-02",
+      "question": "他这趟出门去了什么地方",
+      "primary_category": "travel-whereabouts",
+      "secondary_categories": []
+    },
+    {
+      "id": "travel-whereabouts-03",
+      "question": "她什么时候出发去玩的",
+      "primary_category": "travel-whereabouts",
+      "secondary_categories": ["timing"]
+    },
+    {
+      "id": "work-career-01",
+      "question": "我这份工作后面会稳定吗",
+      "primary_category": "work-career",
+      "secondary_categories": []
+    },
+    {
+      "id": "work-career-02",
+      "question": "这次面试有没有希望",
+      "primary_category": "work-career",
+      "secondary_categories": []
+    },
+    {
+      "id": "work-career-03",
+      "question": "领导对我这个方案什么态度",
+      "primary_category": "work-career",
+      "secondary_categories": ["thoughts-intentions"]
+    },
+    {
+      "id": "money-debt-01",
+      "question": "这笔钱还能收回来吗",
+      "primary_category": "money-debt",
+      "secondary_categories": []
+    },
+    {
+      "id": "money-debt-02",
+      "question": "我最近会不会破财",
+      "primary_category": "money-debt",
+      "secondary_categories": []
+    },
+    {
+      "id": "money-debt-03",
+      "question": "合作方什么时候把款项打过来",
+      "primary_category": "money-debt",
+      "secondary_categories": ["timing", "business-partnership"]
+    },
+    {
+      "id": "business-partnership-01",
+      "question": "这个合作项目能不能成",
+      "primary_category": "business-partnership",
+      "secondary_categories": ["outcomes-development"]
+    },
+    {
+      "id": "business-partnership-02",
+      "question": "和这个伙伴继续合伙靠谱吗",
+      "primary_category": "business-partnership",
+      "secondary_categories": []
+    },
+    {
+      "id": "business-partnership-03",
+      "question": "对方会不会按合同推进合作",
+      "primary_category": "business-partnership",
+      "secondary_categories": ["contracts-documents", "contact-actions"]
+    },
+    {
+      "id": "contracts-documents-01",
+      "question": "这份合同能不能顺利签",
+      "primary_category": "contracts-documents",
+      "secondary_categories": ["outcomes-development"]
+    },
+    {
+      "id": "contracts-documents-02",
+      "question": "我的证件审批什么时候下来",
+      "primary_category": "contracts-documents",
+      "secondary_categories": ["timing"]
+    },
+    {
+      "id": "contracts-documents-03",
+      "question": "房屋买卖手续会不会卡住",
+      "primary_category": "contracts-documents",
+      "secondary_categories": ["housing-property"]
+    },
+    {
+      "id": "study-exams-01",
+      "question": "这次考试能不能通过",
+      "primary_category": "study-exams",
+      "secondary_categories": ["outcomes-development"]
+    },
+    {
+      "id": "study-exams-02",
+      "question": "我复习方向对不对",
+      "primary_category": "study-exams",
+      "secondary_categories": ["strategy-comparison"]
+    },
+    {
+      "id": "study-exams-03",
+      "question": "录取通知大概什么时候有消息",
+      "primary_category": "study-exams",
+      "secondary_categories": ["timing"]
+    },
+    {
+      "id": "health-medicine-01",
+      "question": "我最近身体状态需要注意什么",
+      "primary_category": "health-medicine",
+      "secondary_categories": []
+    },
+    {
+      "id": "health-medicine-02",
+      "question": "这个症状发展会不会加重",
+      "primary_category": "health-medicine",
+      "secondary_categories": ["outcomes-development"]
+    },
+    {
+      "id": "health-medicine-03",
+      "question": "家人这次检查结果要关注什么",
+      "primary_category": "health-medicine",
+      "secondary_categories": ["family-relatives"]
+    },
+    {
+      "id": "family-relatives-01",
+      "question": "我妈现在对这件事是什么态度",
+      "primary_category": "family-relatives",
+      "secondary_categories": ["thoughts-intentions"]
+    },
+    {
+      "id": "family-relatives-02",
+      "question": "家里这次矛盾会不会缓和",
+      "primary_category": "family-relatives",
+      "secondary_categories": ["outcomes-development"]
+    },
+    {
+      "id": "family-relatives-03",
+      "question": "亲戚借钱这事能不能解决",
+      "primary_category": "family-relatives",
+      "secondary_categories": ["money-debt"]
+    },
+    {
+      "id": "children-pregnancy-01",
+      "question": "孩子这次入园能不能顺利",
+      "primary_category": "children-pregnancy",
+      "secondary_categories": ["outcomes-development"]
+    },
+    {
+      "id": "children-pregnancy-02",
+      "question": "我们备孕这件事需要注意什么",
+      "primary_category": "children-pregnancy",
+      "secondary_categories": ["health-medicine"]
+    },
+    {
+      "id": "children-pregnancy-03",
+      "question": "孩子的身体状态要不要尽快复查",
+      "primary_category": "children-pregnancy",
+      "secondary_categories": ["health-medicine"]
+    },
+    {
+      "id": "housing-property-01",
+      "question": "这套房子适不适合买",
+      "primary_category": "housing-property",
+      "secondary_categories": ["strategy-comparison"]
+    },
+    {
+      "id": "housing-property-02",
+      "question": "租房这件事能不能谈成",
+      "primary_category": "housing-property",
+      "secondary_categories": ["outcomes-development"]
+    },
+    {
+      "id": "housing-property-03",
+      "question": "房产证手续什么时候能办好",
+      "primary_category": "housing-property",
+      "secondary_categories": ["contracts-documents", "timing"]
+    },
+    {
+      "id": "disputes-litigation-01",
+      "question": "这个纠纷最后能不能解决",
+      "primary_category": "disputes-litigation",
+      "secondary_categories": ["outcomes-development"]
+    },
+    {
+      "id": "disputes-litigation-02",
+      "question": "对方会不会继续投诉我",
+      "primary_category": "disputes-litigation",
+      "secondary_categories": ["contact-actions"]
+    },
+    {
+      "id": "disputes-litigation-03",
+      "question": "这次官司证据准备够不够",
+      "primary_category": "disputes-litigation",
+      "secondary_categories": ["contracts-documents"]
+    },
+    {
+      "id": "outcomes-development-01",
+      "question": "这件事最后能不能成",
+      "primary_category": "outcomes-development",
+      "secondary_categories": []
+    },
+    {
+      "id": "outcomes-development-02",
+      "question": "后面还有没有转机",
+      "primary_category": "outcomes-development",
+      "secondary_categories": []
+    },
+    {
+      "id": "outcomes-development-03",
+      "question": "我换方案后结果会不会更好",
+      "primary_category": "outcomes-development",
+      "secondary_categories": ["strategy-comparison"]
+    },
+    {
+      "id": "strategy-comparison-01",
+      "question": "我现在应该主动联系还是等待",
+      "primary_category": "strategy-comparison",
+      "secondary_categories": ["contact-actions"]
+    },
+    {
+      "id": "strategy-comparison-02",
+      "question": "选A方案还是B方案更稳",
+      "primary_category": "strategy-comparison",
+      "secondary_categories": []
+    },
+    {
+      "id": "strategy-comparison-03",
+      "question": "这件事我是继续推进还是先查合同",
+      "primary_category": "strategy-comparison",
+      "secondary_categories": ["contracts-documents"]
+    }
+  ]
+}
