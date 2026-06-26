@@ -92,16 +92,16 @@ Scoring dimensions and match rules:
 Lock time and timezone:
 ```
 
-The primary answer must be singular enough to score. A list such as `许昌、郑州、
-洛阳、开封、其他河南城市` is not an exact-city prediction. Broad classes and
+The primary answer must be singular enough to score. A list such as `城市A、
+城市B、城市C、其他同省城市` is not an exact-city prediction. Broad classes and
 ranked alternatives may be useful, but they are scored separately and cannot
 inflate primary exact accuracy.
 
 ## Post-Reveal Scoring
 
 First preserve the user's ground truth verbatim. Then normalize only with an
-alias map fixed before scoring, for example `耳机` and a predeclared equivalent
-`入耳式耳机`. Do not invent an alias merely to create a match.
+alias map fixed before scoring, for example `物品A` and a predeclared equivalent
+`物品A-细分类`. Do not invent an alias merely to create a match.
 
 Score each case deterministically:
 

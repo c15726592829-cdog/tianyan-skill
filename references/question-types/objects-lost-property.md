@@ -9,7 +9,7 @@
 ## Trigger Questions
 
 - 我的左手拿的什么？
-- 找不到的耳机在哪类地方？
+- 找不到的小物件在哪类地方？
 - 我包里现在放着什么重要东西？
 
 ## Exclusions and Redirects
@@ -69,6 +69,10 @@ temporarily unavailable objects.
 
 Use `乾为首`, `坎为耳`, `离为目`, `艮为手`, `兑为口` and natural images as object
 class support. Exact products need a second independent evidence group.
+For color questions, a six spirit directly on the selected object/useful-spirit
+line may outrank broad trigram color; broad trigram color may outrank loose
+Najia element color. If the selected object line is uncertain, do not force an
+exact color.
 
 ## Allowed Answer Resolution
 
@@ -82,8 +86,8 @@ weak/hidden anchor, or overbroad category.
 
 ## Prohibited Inferences
 
-Do not infer “earphones” from 坎为耳 alone; do not reverse-fit an object after
-the reveal as if it had been proven.
+Do not infer a specific audio device from 坎为耳 alone; do not reverse-fit an
+object after the reveal as if it had been proven.
 
 ## Source Rule IDs
 
@@ -96,5 +100,5 @@ the reveal as if it had been proven.
 ## Worked Structural Examples
 
 - “左手拿什么”：use hand/body imagery plus another line/material/function signal before exact object.
-- “耳机在哪”：object class may be known; location-direction module handles place evidence.
+- “小物件在哪”：object class may be known; location-direction module handles place evidence.
 - “包里有什么”：without candidate set, answer category and ranked candidates, not guaranteed exact item.

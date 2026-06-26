@@ -75,6 +75,9 @@ a trigram or three-combination directly to a named city.
 
 Allowed: broad direction, near/far, inside/outside, environment class, or ranked
 candidate among predeclared places. Open-world named city is weak speculation.
+Province or broad-region resolution is usually more defensible than city-level
+resolution. County or campus/building-level resolution normally requires a
+predeclared candidate set and independent non-directional evidence.
 
 ## Required Contrary Evidence
 

@@ -176,8 +176,8 @@ An exact object answer requires at least two independent signals, for example:
 - a fixed candidate set supplied before the cast
 
 Prefer category before exact item. `坎为耳` can support an ear-related object,
-but `earphones` requires independent corroboration; it must not be reverse-fit
-after disclosure.
+but a specific audio device requires independent corroboration; it must not be
+reverse-fit after disclosure.
 
 ## Confidence and Resolution
 

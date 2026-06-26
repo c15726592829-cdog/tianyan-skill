@@ -117,7 +117,7 @@
     },
     {
       "id": "objects-lost-property-02",
-      "question": "找不到的耳机在哪类地方",
+      "question": "找不到的小物件在哪类地方",
       "primary_category": "objects-lost-property",
       "secondary_categories": ["location-direction"]
     },

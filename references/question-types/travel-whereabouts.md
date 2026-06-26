@@ -72,6 +72,8 @@ direction. They do not produce a modern city without independent support.
 
 Allowed: trip phase, broad direction, environment class, likely range, or ranked
 candidate if the candidate set was fixed. Named city is weak in open-world tests.
+For destination questions, lock direction and environment before considering a
+name. If no candidate set exists, give ranked candidates only as speculation.
 
 ## Required Contrary Evidence
 

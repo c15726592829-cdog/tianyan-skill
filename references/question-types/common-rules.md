@@ -103,6 +103,20 @@ answer:
 
 Post-reveal reinterpretation must be recorded separately.
 
+## Accuracy Retrospective Use
+
+Read `references/accuracy-retrospectives.md` when designing accuracy tests,
+reviewing failure modes, or calibrating resolution caps. Treat the file as
+process guidance only:
+
+- use it prospectively, before the answer is locked;
+- do not use revealed truths as evidence for the same case;
+- do not score post-reveal reinterpretation as an original hit;
+- run the context-isolation check before locking an answer;
+- separate YES/NO scoring from open-ended exact questions;
+- keep open-world modern object, city, companion, and motive answers capped
+  unless independent evidence and candidate framing support them.
+
 ## Prohibited Shortcuts
 
 1. Do not infer gender or relationship identity from `妻财` or `官鬼` alone.

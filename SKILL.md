@@ -89,6 +89,11 @@ opening a test case and follow its case ledger and scoring rules. A replay is
 audit-only. Content checks validate the protocol structure, not predictive
 accuracy.
 
+For calibration from prior blind tests, read
+[references/accuracy-retrospectives.md](references/accuracy-retrospectives.md)
+as cautionary process guidance only. Retrospectives do not govern chart
+judgment, do not prove accuracy, and must not be used as revealed answer keys.
+
 ## Manual Casting Input
 
 Require exactly these three user-facing fields:

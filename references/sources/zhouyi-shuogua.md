@@ -22,7 +22,7 @@
 - Conditions: Use when the question asks about a held object, lost object, body part, symptom imagery, or visible image class.
 - Exceptions: A body correspondence does not prove a modern product by itself.
 - Conflicts: Modern exact objects require another independent evidence group beyond this trigram-body image.
-- Modern extension: 坎为耳 can support ear-related objects such as earphones only when a second independent signal or fixed candidate set exists.
+- Modern extension: 坎为耳 can support ear-related modern objects only when a second independent signal or fixed candidate set exists.
 
 ### ZYSG-NATURE-001
 - Status: A
