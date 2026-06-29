@@ -203,6 +203,24 @@ Do not treat these as repeated questions:
 Reviews, line explanations, strategy summaries, and reinterpretation after new
 facts do not count as new casts.
 
+## Reading Contract And Outcome Review
+
+Before interpreting any chart, read
+[references/reading-contract-and-review.md](references/reading-contract-and-review.md).
+Freeze the exact question, subject, perspective, concrete event, requested time
+window, requested and maximum defensible resolution, known facts, and reveal
+status before selecting an anchor or useful spirit.
+
+Ask one focused question only when ambiguity would materially change the
+category, anchor, useful spirit, time window, or scoring resolution. Otherwise
+state the smallest reasonable assumption and proceed. External information is
+reality evidence or contrary evidence only; it cannot import Meihua external
+omens, trigger a recast, or override Najia through `舍卦从应`.
+
+When ordinary post-outcome feedback arrives, preserve the original conclusion
+and use the reference's diagnostic review. Do not score hindsight or promote a
+retrospective pattern without future unrevealed testing.
+
 ## Question Classification
 
 Before chart interpretation, read
@@ -260,7 +278,9 @@ limits, and confidence resolution.
 
 ## Interpretation Order
 
-1. Restate the question, cast time, timezone assumption, and line order.
+1. Restate and lock the exact question, subject, perspective, concrete matter,
+   requested time window and resolution, known facts, reveal status, cast time,
+   timezone assumption, and line order.
 2. Run the charting script.
 3. Present the Zhouyi text without applying it to the question:
    - `本卦`: original judgment and Great Image, then a plain modern-Chinese
@@ -281,7 +301,9 @@ limits, and confidence resolution.
 11. Use hexagram and trigram images only as corroboration; exact objects,
     modern cities, relationship identities, and dates require independent
     support and must be labeled speculative when support is insufficient.
-12. Compare the inference with known real-world facts and contrary evidence.
+12. Compare the inference only with external facts recorded under the reading
+    contract and state contrary evidence; verified reality governs practical
+    advice.
 13. Give a bounded conclusion with resolution and confidence.
 
 The `卦意解读` layer contains only original text and plain translation. It
@@ -347,6 +369,12 @@ Use this structure:
 
 ### 问题分类
 
+- Exact question:
+- Locked before interpretation:
+- Concrete matter or event:
+- Requested time window:
+- Known real-world facts:
+- Outcome already revealed:
 - Primary category:
 - Secondary categories:
 - Classification confidence:
