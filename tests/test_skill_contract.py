@@ -103,6 +103,47 @@ class SkillContractTests(unittest.TestCase):
             with self.subTest(term=term, scope="skill"):
                 self.assertNotIn(term, all_text)
 
+    def test_reading_contract_and_review_protocol(self):
+        skill_text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        path = ROOT / "references" / "reading-contract-and-review.md"
+
+        self.assertTrue(path.is_file(), f"missing reference: {path.name}")
+        self.assertIn("references/reading-contract-and-review.md", skill_text)
+
+        text = path.read_text(encoding="utf-8")
+        for heading in (
+            "## Question Lock",
+            "## External Context Boundary",
+            "## Ordinary Outcome Review",
+        ):
+            with self.subTest(heading=heading):
+                self.assertIn(heading, text)
+
+        for phrase in (
+            "exact user question",
+            "maximum defensible resolution",
+            "already been revealed",
+            "舍卦从应",
+            "does not justify a recast",
+            "preserve the original conclusion",
+            "future unrevealed case",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, text)
+
+    def test_output_exposes_question_lock(self):
+        text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        for field in (
+            "Exact question:",
+            "Locked before interpretation:",
+            "Concrete matter or event:",
+            "Requested time window:",
+            "Known real-world facts:",
+            "Outcome already revealed:",
+        ):
+            with self.subTest(field=field):
+                self.assertIn(field, text)
+
     def test_skill_line_count_stays_compact(self):
         line_count = len((ROOT / "SKILL.md").read_text(encoding="utf-8").splitlines())
         self.assertLess(line_count, 500)
