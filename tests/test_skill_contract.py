@@ -123,6 +123,7 @@ class SkillContractTests(unittest.TestCase):
             "exact user question",
             "maximum defensible resolution",
             "already been revealed",
+            "calendar/chart inputs",
             "舍卦从应",
             "does not justify a recast",
             "preserve the original conclusion",
@@ -130,6 +131,18 @@ class SkillContractTests(unittest.TestCase):
         ):
             with self.subTest(phrase=phrase):
                 self.assertIn(phrase, text)
+
+    def test_manual_cast_calendar_inputs_remain_clarifiable(self):
+        skill_text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        contract_text = (
+            ROOT / "references" / "reading-contract-and-review.md"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("calendar/chart inputs", skill_text)
+        self.assertIn("calendar/chart inputs", contract_text)
+        for phrase in ("timezone", "cast time", "month/day"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, contract_text)
 
     def test_output_exposes_question_lock(self):
         text = (ROOT / "SKILL.md").read_text(encoding="utf-8")

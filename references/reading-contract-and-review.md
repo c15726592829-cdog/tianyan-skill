@@ -17,8 +17,9 @@ Before selecting a category, person or matter anchor, or useful spirit, record:
 - whether an outcome, answer, candidate, or ground truth has already been revealed.
 
 If ambiguity would change the primary category, anchor, useful spirit, time
-window, or scoring resolution, ask one focused question before interpretation.
-Otherwise state the smallest reasonable assumption and proceed.
+window, scoring resolution, or calendar/chart inputs, ask one focused question
+before interpretation. Otherwise state the smallest reasonable assumption and
+proceed.
 
 The lock occurs before chart interpretation. After locking, do not silently
 rewrite the question, change perspective, switch anchors, narrow or widen the

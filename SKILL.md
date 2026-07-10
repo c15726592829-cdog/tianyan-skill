@@ -212,10 +212,11 @@ window, requested and maximum defensible resolution, known facts, and reveal
 status before selecting an anchor or useful spirit.
 
 Ask one focused question only when ambiguity would materially change the
-category, anchor, useful spirit, time window, or scoring resolution. Otherwise
-state the smallest reasonable assumption and proceed. External information is
-reality evidence or contrary evidence only; it cannot import Meihua external
-omens, trigger a recast, or override Najia through `舍卦从应`.
+category, anchor, useful spirit, time window, scoring resolution, or
+calendar/chart inputs. Otherwise state the smallest reasonable assumption and
+proceed. External information is reality evidence or contrary evidence only; it
+cannot import Meihua external omens, trigger a recast, or override Najia through
+`舍卦从应`.
 
 When ordinary post-outcome feedback arrives, preserve the original conclusion
 and use the reference's diagnostic review. Do not score hindsight or promote a
