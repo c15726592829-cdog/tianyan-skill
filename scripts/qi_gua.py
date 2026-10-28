@@ -72,6 +72,7 @@ def build_cast(
     entropy: bytes | None = None,
     moment: datetime | None = None,
     mode: str = "live",
+    location: str = "",
 ) -> dict[str, object]:
     """Return a complete, auditable three-coin casting record."""
     question = question.strip()
@@ -113,6 +114,7 @@ def build_cast(
         "algorithm": ALGORITHM,
         "mode": mode,
         "question": question,
+        "location": location.strip(),
         "cast_time": local_moment.strftime("%Y-%m-%d %H:%M"),
         "timezone": timezone_name,
         "entropy_hex": entropy.hex(),
@@ -159,6 +161,7 @@ def _build_parser() -> argparse.ArgumentParser:
         "--replay-time",
         help="Original cast time for replay: YYYY-MM-DD HH:MM.",
     )
+    parser.add_argument("--location", default="", help="Recorded casting city.")
     return parser
 
 
@@ -177,9 +180,10 @@ def main() -> int:
                 entropy=_parse_entropy_hex(args.replay_entropy),
                 moment=_parse_replay_time(args.replay_time, args.timezone),
                 mode="replay",
+                location=args.location,
             )
         else:
-            cast = build_cast(args.question, args.timezone)
+            cast = build_cast(args.question, args.timezone, location=args.location)
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2

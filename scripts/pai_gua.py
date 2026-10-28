@@ -482,6 +482,7 @@ def build_chart(
     cast_time: str,
     timezone_name: str,
     line_values: str | Iterable[int],
+    location: str = "",
 ) -> dict[str, object]:
     """Build and return a complete deterministic Wenwang Liuyao chart."""
     values = parse_line_values(line_values)
@@ -544,6 +545,7 @@ def build_chart(
 
     return {
         "question": question.strip(),
+        "location": location.strip(),
         "cast_time": moment.isoformat(),
         "timezone": getattr(moment.tzinfo, "key", str(moment.tzinfo)),
         "input_order": "bottom_to_top",
@@ -583,13 +585,14 @@ def _build_parser() -> argparse.ArgumentParser:
         required=True,
         help="Six 6/7/8/9 values ordered bottom to top.",
     )
+    parser.add_argument("--location", default="", help="Recorded city; no automatic solar-time correction.")
     return parser
 
 
 def main() -> int:
     args = _build_parser().parse_args()
     try:
-        chart = build_chart(args.question, args.time, args.timezone, args.lines)
+        chart = build_chart(args.question, args.time, args.timezone, args.lines, location=args.location)
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2

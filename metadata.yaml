@@ -1,0 +1,7 @@
+name: astrbot_plugin_daily_gua
+display_name: 每日一卦
+desc: 文王纳甲三硬币起卦，每人每日一卦，支持独立自身卦、地点日期、持久审计与卦盘图。
+version: v0.2.0
+author: c15726592829-cdog
+repo: https://github.com/c15726592829-cdog/tianyan-skill
+astrbot_version: ">=4.5.0"

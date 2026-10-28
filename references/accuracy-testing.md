@@ -14,11 +14,11 @@ Each materially distinct test prompt is a new case. Preserve the user's exact
 question; do not rewrite it into a leading yes/no question or insert an answer
 candidate that was not supplied.
 
-## Daily-Limit Override
+## Daily-Limit Policy
 
-Accuracy Test Mode may exceed the normal three-new-hexagrams-per-day limit
-because repeated cases are the declared task. This override applies only to
-clearly identified test cases.
+Accuracy Test Mode does not bypass the one-new-hexagram-per-user-per-day limit.
+Repeated offline fixtures and disclosed-entropy replays are audit-only; live
+AstrBot users never gain another daily slot through a test prompt.
 
 All other safeguards remain active:
 
