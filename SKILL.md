@@ -13,6 +13,7 @@ Ask the user to provide exactly this format:
 
 ```text
 问题：
+起卦地点：
 起卦时间：
 爻象：
 ```
@@ -70,9 +71,9 @@ three-coin method, not a claim of supernatural randomness.
 Activate this mode only when the user explicitly calls the session an accuracy
 test, benchmark, blind test, or `准确性测试`. State that the mode is active.
 
-Accuracy Test Mode overrides the normal three-new-hexagrams-per-day limit for
-clearly identified test cases. It does not override any casting or audit
-safeguard:
+Accuracy Test Mode does not bypass the one-new-hexagram-per-user-per-day limit.
+Offline fixtures and disclosed-entropy replays are audit tests, not new live
+casts. It also does not override any casting or audit safeguard:
 
 - assign an immutable case ID and preserve the user's exact question
 - treat each materially distinct test prompt as one case
@@ -96,10 +97,11 @@ judgment, do not prove accuracy, and must not be used as revealed answer keys.
 
 ## Manual Casting Input
 
-Require exactly these three user-facing fields:
+Require these user-facing fields:
 
 ```text
 问题：
+起卦地点：
 起卦时间：
 爻象：
 ```
@@ -128,8 +130,8 @@ time. Do not accept a date without hour and minute.
 If the timezone is absent, use the user's current timezone from the environment
 when available and state the assumption. If no environment timezone is
 available, default to `Asia/Shanghai`. If the question clearly occurs in
-another region, ask for the timezone before interpreting. Do not ask for a
-fourth user-facing field unless the timezone is materially ambiguous.
+another region, ask for the timezone before interpreting. Record the city supplied by the user. Never guess a location from a QQ ID.
+Location is metadata; do not silently apply longitude or true-solar-time changes.
 
 If any required field is missing or the line count/order is unclear, request
 the missing information before interpreting.
@@ -141,7 +143,8 @@ Resolve paths relative to this `SKILL.md`. From the skill directory, run:
 ```text
 python scripts/qi_gua.py \
   --question "<问题>" \
-  --timezone "<IANA timezone>"
+  --timezone "<IANA timezone>" \
+  --location "<起卦城市>"
 ```
 
 The script simulates three coins per line and six lines bottom to top:
@@ -172,18 +175,19 @@ interpreted as newly generated divination.
 
 ## Usage Discipline
 
-The daily limit below applies outside explicit Accuracy Test Mode. The test-mode
-override and unchanged one-cast safeguards are defined above.
+The daily limit below applies to every live user, including Accuracy Test Mode.
+The persistent AstrBot quota cannot be bypassed by a prompt, changed question,
+city, timezone, retry, or restart.
 
-- In the visible conversation context, analyze at most three new hexagrams for
+- In the visible conversation context, analyze at most one new hexagram for
   the same user in one natural day.
 - If the host environment provides persistent state, record and enforce the
-  count by the user's local date.
+  count by the Asia/Shanghai natural date (00:00 reset).
 - If historical count cannot be confirmed, enforce the limit only from visible
   records and do not invent counts.
 - Do not recast a materially unchanged question. Return to the original chart
   for clarification or review.
-- Assistant live casts count toward the same three-per-day limit.
+- Assistant live casts count toward the same one-per-day limit.
 
 Treat these as repeated questions:
 
@@ -254,6 +258,7 @@ python scripts/pai_gua.py \
   --question "<问题>" \
   --time "<YYYY-MM-DD HH:MM>" \
   --timezone "<IANA timezone>" \
+  --location "<起卦城市>" \
   --lines "<six values or Chinese line names bottom to top>"
 ```
 
@@ -336,6 +341,7 @@ Use this structure:
 
 - 问题：
 - 起卦时间：
+- 起卦地点：
 - 时区：
 - 爻序：自下而上
 - 本卦：
@@ -455,3 +461,12 @@ employment, or contract decisions:
 - do not tell the user to delay urgent care, ignore legal deadlines, risk money,
   or enter danger because of a hexagram
 - do not give certainty, probability percentages, or guaranteed outcomes
+
+## AstrBot 每日一卦
+
+The repository root is also an AstrBot plugin. Use fish_daily_gua or /每日一卦.
+Each QQ user has one persistent daily cast; fish:self has an independent one.
+The whale defaults to 北京. Other users supply their own city; missing input does
+not consume a quota. The QQ platform exposes no test-mode bypass. Program dates
+and three-coin entropy are recorded before chart interpretation. Existing charts
+can be reviewed without casting again. See README.md for commands and deployment.

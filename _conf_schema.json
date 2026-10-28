@@ -1,0 +1,37 @@
+{
+  "enabled": {
+    "type": "bool",
+    "default": true,
+    "description": "启用QQ私聊每日一卦"
+  },
+  "self_location": {
+    "type": "string",
+    "default": "北京",
+    "description": "大肥鱼自己的起卦城市，好友地点由各自提供"
+  },
+  "self_home": {
+    "type": "string",
+    "default": "",
+    "description": "鱼鱼自己的卦保存目录；留空使用插件数据目录"
+  },
+  "provider_id": {
+    "type": "string",
+    "default": "",
+    "description": "解读模型ID；留空使用当前会话模型"
+  },
+  "enable_interpretation": {
+    "type": "bool",
+    "default": true,
+    "description": "对同一张程序排盘生成一次纳甲解读并保存"
+  },
+  "render_image": {
+    "type": "bool",
+    "default": true,
+    "description": "生成带地点、日期和六爻的中文卦盘图"
+  },
+  "font_path": {
+    "type": "string",
+    "default": "",
+    "description": "可选中文字体文件；默认检测微软雅黑、黑体或Noto CJK"
+  }
+}
